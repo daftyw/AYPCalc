@@ -11,24 +11,26 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/secondary_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="25sp"
         android:textColor="@color/colorAccent"
         tools:text="Sub display"
         android:layout_weight="1" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/primary_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="36sp"
+        android:textSize="42sp"
         tools:text="Main display"
         android:layout_weight="1" />
 
 
     <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:columnCount="4"
         tools:context="com.augmentis.ayp.calculator.CalcActivity"
         android:layout_weight="10">
