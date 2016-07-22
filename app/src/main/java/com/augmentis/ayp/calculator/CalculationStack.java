@@ -1,12 +1,13 @@
 package com.augmentis.ayp.calculator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Rawin on 22-Jul-16.
  */
-public class CalculationStack {
+public class CalculationStack implements Serializable {
     private List<CalculationObject> calculationObjectList;
     private float result;
 

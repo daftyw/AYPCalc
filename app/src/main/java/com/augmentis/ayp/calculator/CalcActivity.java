@@ -1,5 +1,6 @@
 package com.augmentis.ayp.calculator;
 
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 public class CalcActivity extends AppCompatActivity {
 
     private static final String TAG = "Calc_Act";
+    private static final String CALC = "ayp.CALC";
     int[] numberIds = new int[] {
             R.id.numberButton0,
             R.id.numberButton1,
@@ -43,10 +45,23 @@ public class CalcActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
-        calc = new Calculator();
+
+        if(savedInstanceState != null) {
+            calc = (Calculator) savedInstanceState.getSerializable(CALC);
+        } else {
+            calc = new Calculator();
+        }
+
         bindScreens();
         bindButtons(); // bind buttons
         updateUI();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable(CALC, calc);
     }
 
     private void bindScreens() {
@@ -56,7 +71,6 @@ public class CalcActivity extends AppCompatActivity {
 
     Button[] numberButtons ;
     Button[] operatorButtons ;
-    boolean resetBuffer = false;
 
     private void bindButtons() {
         int l = numberIds.length;
@@ -105,15 +119,11 @@ public class CalcActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                clear();
+                Log.d(TAG, "Clear !!");
+                calc.pressClear();
                 updateUI();
             }
         });
-    }
-
-    private void clear() {
-        Log.d(TAG, "Clear !!");
-        calc.pressClear();
     }
 
     private void updateUI() {

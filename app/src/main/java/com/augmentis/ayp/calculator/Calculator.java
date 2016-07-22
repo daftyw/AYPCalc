@@ -1,11 +1,12 @@
 package com.augmentis.ayp.calculator;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 /**
  * Created by Rawin on 22-Jul-16.
  */
-public class Calculator {
+public class Calculator implements Serializable {
 
     String screenBuffer;
     String primaryScreen;
