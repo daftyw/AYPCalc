@@ -14,9 +14,9 @@
         android:id="@+id/secondary_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
+        android:gravity="start"
         android:textColor="@color/colorAccent"
-        android:textSize="30sp"
+        android:textSize="20sp"
         tools:text="Sub display"
         android:layout_weight="2"
         />
@@ -26,10 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:textSize="60sp"
+        android:textSize="40sp"
         tools:text="Main display"
         android:layout_weight="3"
-        />
+        style="@android:style/TextAppearance.Widget.EditText" />
 
 
     <TableLayout
@@ -48,7 +48,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_seven"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
 
             <Button
@@ -57,7 +58,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_eight"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless"
+                />
 
 
             <Button
@@ -66,7 +69,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_nine"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
 
             <Button
@@ -75,7 +79,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/operator_add"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
         </TableRow>
 
@@ -89,7 +94,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_four"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
 
             <Button
@@ -98,7 +104,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_five"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
 
             <Button
@@ -107,7 +114,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_six"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless"
+                />
 
 
             <Button
@@ -116,7 +125,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/operator_sub"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
         </TableRow>
         <!-- Third row -->
@@ -128,7 +138,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_one"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
 
             <Button
@@ -137,7 +148,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_two"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
 
             <Button
@@ -146,7 +158,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_three"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
 
             <Button
@@ -155,7 +168,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/operator_multiply"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
         </TableRow>
 
         <!-- Fourth row -->
@@ -167,7 +181,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/operator_clear"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
             <Button
                 android:id="@+id/numberButton0"
@@ -175,7 +190,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/number_zero"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
             <Button
                 android:id="@+id/equalButton"
@@ -183,7 +199,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/operator_equal"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
 
             <Button
                 android:id="@+id/divideButton"
@@ -191,7 +208,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/operator_divide"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@android:style/Widget.Material.Button.Borderless" />
         </TableRow>
     </TableLayout>
 
