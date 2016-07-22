@@ -1,178 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="30dp"
-    tools:context="com.augmentis.ayp.calculator.CalcActivity"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_horizontal_margin"
+              tools:context="com.augmentis.ayp.calculator.CalcActivity">
 
     <TextView
         android:id="@+id/secondary_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:gravity="right"
         android:textColor="@color/colorAccent"
+        android:textSize="30sp"
         tools:text="Sub display"
-        android:textAlignment="viewEnd"
-         />
+        android:layout_weight="2"
+        />
 
     <TextView
         android:id="@+id/primary_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="right"
         android:textSize="60sp"
         tools:text="Main display"
-        android:gravity="center"
-        android:textAlignment="viewEnd"/>
+        android:layout_weight="3"
+        />
 
 
-    <GridLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-
+        android:layout_weight="4"
         >
 
         <!-- First row -->
+        <TableRow android:layout_weight="1">
 
-        <Button
-            android:id="@+id/numberButton7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:height="10dp"
-            android:layout_margin="0dp"
-            android:text="@string/number_seven" />
-
-
-        <Button
-            android:id="@+id/numberButton8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_margin="0dp"
-            android:text="@string/number_eight" />
+            <Button
+                android:id="@+id/numberButton7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_seven"
+                android:textSize="20sp"/>
 
 
-        <Button
-            android:id="@+id/numberButton9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_nine" />
+            <Button
+                android:id="@+id/numberButton8"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_eight"
+                android:textSize="20sp"/>
 
 
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/operator_add" />
+            <Button
+                android:id="@+id/numberButton9"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_nine"
+                android:textSize="20sp"/>
 
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/operator_add"
+                android:textSize="20sp"/>
+
+        </TableRow>
 
         <!-- Second Row -->
 
-        <Button
-            android:id="@+id/numberButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_four" />
+        <TableRow android:layout_weight="1">
+
+            <Button
+                android:id="@+id/numberButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_four"
+                android:textSize="20sp"/>
 
 
-        <Button
-            android:id="@+id/numberButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_five" />
+            <Button
+                android:id="@+id/numberButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_five"
+                android:textSize="20sp"/>
 
 
-        <Button
-            android:id="@+id/numberButton6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_six" />
+            <Button
+                android:id="@+id/numberButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_six"
+                android:textSize="20sp"/>
 
 
-        <Button
-            android:id="@+id/subButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/operator_sub" />
+            <Button
+                android:id="@+id/subButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/operator_sub"
+                android:textSize="20sp"/>
 
+        </TableRow>
         <!-- Third row -->
+        <TableRow android:layout_weight="1">
 
-        <Button
-            android:id="@+id/numberButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_one" />
-
-
-        <Button
-            android:id="@+id/numberButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_two" />
+            <Button
+                android:id="@+id/numberButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_one"
+                android:textSize="20sp"/>
 
 
-        <Button
-            android:id="@+id/numberButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_three" />
+            <Button
+                android:id="@+id/numberButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_two"
+                android:textSize="20sp"/>
 
 
-        <Button
-            android:id="@+id/multiplyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/operator_multiply" />
+            <Button
+                android:id="@+id/numberButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_three"
+                android:textSize="20sp"/>
 
+
+            <Button
+                android:id="@+id/multiplyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/operator_multiply"
+                android:textSize="20sp"/>
+        </TableRow>
 
         <!-- Fourth row -->
+        <TableRow android:layout_weight="1">
 
-        <Button
-            android:id="@+id/clearButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/operator_clear" />
+            <Button
+                android:id="@+id/clearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/operator_clear"
+                android:textSize="20sp"/>
 
-        <Button
-            android:id="@+id/numberButton0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/number_zero" />
+            <Button
+                android:id="@+id/numberButton0"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/number_zero"
+                android:textSize="20sp"/>
 
-        <Button
-            android:id="@+id/equalButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/operator_equal" />
+            <Button
+                android:id="@+id/equalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/operator_equal"
+                android:textSize="20sp"/>
 
-        <Button
-            android:id="@+id/divideButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/operator_divide" />
-
-    </GridLayout>
+            <Button
+                android:id="@+id/divideButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/operator_divide"
+                android:textSize="20sp"/>
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>
