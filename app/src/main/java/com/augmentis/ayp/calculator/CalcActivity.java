@@ -121,29 +121,30 @@ public class CalcActivity extends AppCompatActivity {
     private void setOperator(CharSequence operator) {
         Log.d(TAG, "Got " + operator);
 
-        int tempBuffer = Integer.valueOf(primaryBuffer);
+        int temp = Integer.valueOf(primaryBuffer);
         int result = 0;
 
         if( currentNumber != 0 ) {
 
             if (currentOperator.equals("+")) {
-                result = currentNumber + tempBuffer;
+                result = currentNumber + temp;
             } else if (currentOperator.equals("-")) {
-                result = currentNumber - tempBuffer;
+                result = currentNumber - temp;
             } else if (currentOperator.equals("/")) {
-                result = currentNumber / tempBuffer;
+                result = currentNumber / temp;
             } else if (currentOperator.equals("*")) {
-                result = currentNumber * tempBuffer;
+                result = currentNumber * temp;
             }
 
             currentNumber = result;
             currentOperator = operator.toString();
 
             // display
-            secondaryBuffer += " " + tempBuffer + " " + currentOperator;
+            primaryBuffer = String.valueOf(currentNumber);
+            secondaryBuffer += " " + temp + " " + currentOperator;
 
         } else {
-            currentNumber = tempBuffer;
+            currentNumber = temp;
             currentOperator = operator.toString();
 
             // display
