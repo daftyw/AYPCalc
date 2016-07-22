@@ -37,20 +37,13 @@ public class CalcActivity extends AppCompatActivity {
     TextView primaryScreen;
     TextView secondaryScreen;
 
-    int currentNumber;
-    int tod;
-
-    String primaryBuffer;
-    String secondaryBuffer;
-    String currentOperator;
+    Calculator calc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
-        currentNumber = 0;
-        primaryBuffer = String.valueOf(currentNumber);   // <-- Convert int to String
-        secondaryBuffer = "";
+        calc = new Calculator();
         bindScreens();
         bindButtons(); // bind buttons
         updateUI();
@@ -76,7 +69,7 @@ public class CalcActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Button thisButton = (Button) v;
 
-                    setNumber(thisButton.getText());
+                    calc.pressNumber(thisButton.getText().toString());
                     updateUI();
                 }
             });
@@ -92,7 +85,7 @@ public class CalcActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Button thisButton = (Button) view;
 
-                    setOperator(thisButton.getText());
+                    calc.pressOperator(thisButton.getText().toString());
                     updateUI();
                 }
             });
@@ -103,7 +96,7 @@ public class CalcActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                calcResult();
+                calc.pressEqual();
                 updateUI();
             }
         });
@@ -118,94 +111,13 @@ public class CalcActivity extends AppCompatActivity {
         });
     }
 
-    private void setOperator(CharSequence operator) {
-        Log.d(TAG, "Got " + operator);
-
-        int temp = Integer.valueOf(primaryBuffer);
-        int result = 0;
-
-        if( currentNumber != 0 ) {
-
-            if (currentOperator.equals("+")) {
-                result = currentNumber + temp;
-            } else if (currentOperator.equals("-")) {
-                result = currentNumber - temp;
-            } else if (currentOperator.equals("/")) {
-                result = currentNumber / temp;
-            } else if (currentOperator.equals("*")) {
-                result = currentNumber * temp;
-            }
-
-            currentNumber = result;
-            currentOperator = operator.toString();
-
-            // display
-            primaryBuffer = String.valueOf(currentNumber);
-            secondaryBuffer += " " + temp + " " + currentOperator;
-
-        } else {
-            currentNumber = temp;
-            currentOperator = operator.toString();
-
-            // display
-            secondaryBuffer = currentNumber + " " + currentOperator;
-        }
-
-        resetBuffer = true;
-        Log.d(TAG, "currentNumber = " + currentNumber);
-    }
-
-    private void setNumber(CharSequence number) {
-        Log.d(TAG, "Got " + number);
-
-        if(primaryBuffer.equals("0")) {
-            primaryBuffer = "";
-        }
-
-        if(resetBuffer) {
-            primaryBuffer = "";
-            resetBuffer = false;
-        }
-
-        primaryBuffer = primaryBuffer + number;
-    }
-
     private void clear() {
         Log.d(TAG, "Clear !!");
-
-        currentNumber = 0;
-        primaryBuffer = String.valueOf(currentNumber);
-        secondaryBuffer = "";
-    }
-
-    /**
-     *
-     */
-    private void calcResult() {
-        Log.d(TAG, "Calculates !!");
-
-        int result = 0;
-
-        if(currentOperator.equals("+")) {
-            result = currentNumber + Integer.valueOf(primaryBuffer);
-        } else if(currentOperator.equals("-")) {
-            result = currentNumber - Integer.valueOf(primaryBuffer);
-        } else if(currentOperator.equals("/")) {
-            result = currentNumber / Integer.valueOf(primaryBuffer);
-        } else if(currentOperator.equals("*")) {
-            result = currentNumber * Integer.valueOf(primaryBuffer);
-        }
-
-        currentNumber = 0;
-        primaryBuffer = String.valueOf(result);
-        secondaryBuffer = "";
+        // TODO : Clear
     }
 
     private void updateUI() {
-        Log.d(TAG, "Update UI");
-        Log.d(TAG, "Primary = " + primaryBuffer + ", Secondary = " + secondaryBuffer);
-
-        primaryScreen.setText(primaryBuffer);
-        secondaryScreen.setText(secondaryBuffer);
+        primaryScreen.setText(calc.getPrimaryScreen());
+        secondaryScreen.setText(calc.getSecondaryScreen());
     }
 }
