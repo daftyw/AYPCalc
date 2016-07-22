@@ -1,74 +1,76 @@
 package com.augmentis.ayp.calculator;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by Rawin on 22-Jul-16.
  */
 public class Calculator {
 
-    String temp = "";
-    int mainNumber = 0;
-    String currentOperator;
-    int result;
+    String screenBuffer;
     String primaryScreen;
     String secondaryScreen;
-    int operatorCount = 0;
+    CalculationStack calculationStack;
+    DecimalFormat decimalFormat;
+    boolean pressingOperator;
+
+    protected Calculator () {
+        calculationStack = new CalculationStack();
+        secondaryScreen = "";
+        decimalFormat = new DecimalFormat("0.#########");
+        primaryScreen = "0";
+        pressingOperator = false;
+        screenBuffer = "";
+    }
 
     public void pressNumber(String numberText) {
-        temp += numberText;
+        screenBuffer += numberText;
 
-        primaryScreen = String.valueOf(Integer.parseInt(temp));
+        primaryScreen = String.valueOf(Integer.parseInt(screenBuffer));
+        pressingOperator = false;
     }
 
     public void pressOperator(String operatorText) {
-        if(operatorCount == 0) {
-            mainNumber = Integer.valueOf(temp);
-            currentOperator = operatorText;
+        if(pressingOperator) {
+            // add to stack
+            calculationStack.add(operatorText);
 
-            primaryScreen = temp;
-            temp = "";
-            secondaryScreen = mainNumber + " " + operatorText;
+            // replace
+            int len = secondaryScreen.length();
+            String oldParse = secondaryScreen.substring(0, len - 1 );
+            secondaryScreen = oldParse + operatorText;
 
         } else {
-            int tod=0;
-            int temp = Integer.valueOf(this.temp);
-            if (currentOperator.equals("+")) {
-                tod = mainNumber + temp;
-            } else if (currentOperator.equals("-")) {
-                tod = mainNumber - temp;
-            } else if (currentOperator.equals("/")) {
-                tod = mainNumber / temp;
-            } else if (currentOperator.equals("*")) {
-                tod = mainNumber * temp;
+            float f = Float.valueOf(primaryScreen);
+            calculationStack.add(Float.valueOf(primaryScreen));
+            calculationStack.add(operatorText);
+
+            if (secondaryScreen.length() > 0) {
+                secondaryScreen += " ";
             }
 
-            mainNumber = tod;
-            this.temp = "";
-            currentOperator = operatorText;
-
+            secondaryScreen += decimalFormat.format(f) + " " + operatorText;
+            primaryScreen = decimalFormat.format(calculationStack.getResult());
+            screenBuffer = "";
+            pressingOperator = true;
         }
-
-        operatorCount++;
     }
 
     public void pressEqual() {
-        int temp = Integer.valueOf(this.temp);
-
-        if (currentOperator.equals("+")) {
-            result = mainNumber + temp;
-        } else if (currentOperator.equals("-")) {
-            result = mainNumber - temp;
-        } else if (currentOperator.equals("/")) {
-            result = mainNumber / temp;
-        } else if (currentOperator.equals("*")) {
-            result = mainNumber * temp;
+        if(!screenBuffer.equals("")) {
+            calculationStack.add(Float.valueOf(screenBuffer));
         }
 
-        operatorCount= 0;
-
+        primaryScreen = decimalFormat.format(calculationStack.getResult());
+        secondaryScreen = "";
+        calculationStack.clear();
     }
 
-    public int getResult() {
-        return result;
+    public void pressClear() {
+        calculationStack.clear();
+        primaryScreen = "0";
+        secondaryScreen = "";
+        screenBuffer = "";
     }
 
     public String getPrimaryScreen() {

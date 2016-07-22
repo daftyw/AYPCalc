@@ -15,9 +15,9 @@ public class CalculatorUnitTest {
         calculator.pressOperator("+");
         calculator.pressNumber("1");
         calculator.pressEqual();
-        int calculatorResult = calculator.getResult();
 
-        assertEquals(2, calculatorResult);
+        assertEquals("2", calculator.getPrimaryScreen());
+        assertEquals("", calculator.getSecondaryScreen());
     }
 
     @Test
@@ -29,10 +29,12 @@ public class CalculatorUnitTest {
         calculator.pressOperator("+");
         calculator.pressNumber("1");
         calculator.pressNumber("1");
-        calculator.pressEqual();
-        int calculatorResult = calculator.getResult();
 
-        assertEquals(112, calculatorResult);
+        assertEquals("101 +", calculator.getSecondaryScreen());
+
+        calculator.pressEqual();
+
+        assertEquals("112", calculator.getPrimaryScreen());
     }
 
     @Test
@@ -44,10 +46,10 @@ public class CalculatorUnitTest {
         calculator.pressOperator("*");
         calculator.pressNumber("1");
         calculator.pressNumber("0");
-        calculator.pressEqual();
-        int calculatorResult = calculator.getResult();
 
-        assertEquals(1000, calculatorResult);
+        assertEquals("100 *", calculator.getSecondaryScreen());
+        calculator.pressEqual();
+        assertEquals("1000", calculator.getPrimaryScreen());
     }
 
     @Test
@@ -59,10 +61,10 @@ public class CalculatorUnitTest {
         calculator.pressOperator("-");
         calculator.pressNumber("1");
         calculator.pressNumber("0");
-        calculator.pressEqual();
-        int calculatorResult = calculator.getResult();
 
-        assertEquals(90, calculatorResult);
+        assertEquals("100 -", calculator.getSecondaryScreen());
+        calculator.pressEqual();
+        assertEquals("90", calculator.getPrimaryScreen());
     }
 
     @Test
@@ -74,10 +76,10 @@ public class CalculatorUnitTest {
         calculator.pressOperator("/");
         calculator.pressNumber("1");
         calculator.pressNumber("0");
-        calculator.pressEqual();
-        int calculatorResult = calculator.getResult();
 
-        assertEquals(10, calculatorResult);
+        assertEquals("100 /", calculator.getSecondaryScreen());
+        calculator.pressEqual();
+        assertEquals("10", calculator.getPrimaryScreen());
     }
 
     @Test
@@ -93,7 +95,6 @@ public class CalculatorUnitTest {
         assertEquals("1 +", secondaryScreen);
     }
 
-
     @Test
     public void test_100_sub_10_sub_10_equals_80() {
         Calculator calculator = new Calculator();
@@ -106,10 +107,25 @@ public class CalculatorUnitTest {
         calculator.pressOperator("-");
         calculator.pressNumber("1");
         calculator.pressNumber("0");
+        assertEquals("100 - 10 -", calculator.getSecondaryScreen());
         calculator.pressEqual();
-        int calculatorResult = calculator.getResult();
 
-        assertEquals(80, calculatorResult);
+        assertEquals("80", calculator.getPrimaryScreen());
+    }
+
+    @Test
+    public void test_10_add_sub_1_equals_9() {
+        Calculator calculator = new Calculator();
+        calculator.pressNumber("1");
+        calculator.pressNumber("0");
+        calculator.pressOperator("+");
+        calculator.pressOperator("-");
+        calculator.pressNumber("1");
+
+        assertEquals("10 -", calculator.getSecondaryScreen());
+        calculator.pressEqual();
+
+        assertEquals("9", calculator.getPrimaryScreen());
     }
 
     @Test
@@ -120,10 +136,11 @@ public class CalculatorUnitTest {
         calculator.pressNumber("1");
         calculator.pressOperator("+");
         calculator.pressNumber("1");
+
+        assertEquals("11 +", calculator.getSecondaryScreen());
         calculator.pressEqual();
 
-        int result = calculator.getResult();
-        assertEquals(12, result);
+        assertEquals("12", calculator.getPrimaryScreen());
     }
 
     @Test
@@ -136,4 +153,75 @@ public class CalculatorUnitTest {
         String result = calculator.getPrimaryScreen();
         assertEquals("11", result);
     }
+
+    @Test
+    public void test_011_multiply_2_sub_3_sub_2_divide_2_result_11() {
+        Calculator calculator = new Calculator();
+        calculator.pressNumber("0");
+        calculator.pressNumber("1");
+        calculator.pressNumber("1");
+        calculator.pressOperator("*");
+        calculator.pressNumber("2");
+        calculator.pressOperator("-");
+        calculator.pressNumber("3");
+        calculator.pressOperator("-");
+        calculator.pressNumber("2");
+        calculator.pressOperator("/");
+        calculator.pressNumber("2");
+
+        String result = calculator.getPrimaryScreen();
+        assertEquals("2", result);
+
+        calculator.pressEqual();
+        assertEquals("8.5", calculator.getPrimaryScreen());
+
+    }
+
+    @Test
+    public void test_2_sub_clear() {
+        Calculator calculator = new Calculator();
+        calculator.pressNumber("2");
+        calculator.pressOperator("-");
+        calculator.pressClear();
+
+        assertEquals("0", calculator.getPrimaryScreen());
+        assertEquals("", calculator.getSecondaryScreen());
+    }
+
+    @Test
+    public void test_start_calc() {
+        Calculator calculator = new Calculator();
+        assertEquals("0", calculator.primaryScreen);
+        assertEquals("", calculator.secondaryScreen);
+    }
+
+    @Test
+    public void test_3_add_3_clear_3_add_5_equals_8() {
+        Calculator calculator = new Calculator();
+        calculator.pressNumber("3");
+        calculator.pressOperator("+");
+        calculator.pressNumber("3");
+        calculator.pressClear();
+
+        assertEquals("0", calculator.primaryScreen);
+
+        calculator.pressNumber("3");
+        calculator.pressOperator("+");
+        calculator.pressNumber("5");
+        calculator.pressEqual();
+
+        assertEquals("8", calculator.primaryScreen);
+    }
+
+    @Test
+    public void test_7_divide_22_equals_0_dot_318181813() {
+        Calculator calculator = new Calculator();
+        calculator.pressNumber("7");
+        calculator.pressOperator("/");
+        calculator.pressNumber("22");
+
+        assertEquals("0.318181813", calculator.primaryScreen);
+    }
+
+
 }

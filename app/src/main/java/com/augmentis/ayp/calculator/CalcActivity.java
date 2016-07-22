@@ -113,7 +113,7 @@ public class CalcActivity extends AppCompatActivity {
 
     private void clear() {
         Log.d(TAG, "Clear !!");
-        // TODO : Clear
+        calc.pressClear();
     }
 
     private void updateUI() {
